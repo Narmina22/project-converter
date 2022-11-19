@@ -2,7 +2,6 @@ const currencyEl_one = document.getElementById('currency-one');
 const currencyEl_two = document.getElementById('currency-two');
 const amountEl_one = document.querySelector('.amount-one');
 const amountEl_two = document.querySelector('.amount-two');
-
 const rateEl1 = document.querySelector('.rate-first');
 const rateEl2 = document.querySelector('.rate-second');
 
@@ -39,6 +38,6 @@ function spaces(num) {
 
 currencyEl_one.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 amountEl_one.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
-currencyEl_two.addEventListener('change', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
+currencyEl_two.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 amountEl_two.addEventListener('input', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
 calculate()
