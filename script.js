@@ -21,10 +21,12 @@ function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
         amountEl_two.value = (amountEl_one.value * rate).toFixed(4);
     })
 }
+
 function nulls(num) {
     if(num.split('.')[1] == '0000') num = num.split[0];
     return num;
 }
+
 function spaces(num) {
     const s = num.length;
     const chars = num.split('');
@@ -34,6 +36,7 @@ function spaces(num) {
     }, '');
     return ((strWithSpaces[0] === ' ') ? strWithSpaces.slice(1) : strWithSpaces);
 }
+
 currencyEl_one.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 amountEl_one.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 currencyEl_two.addEventListener('change', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
