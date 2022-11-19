@@ -35,7 +35,13 @@ function spaces(num) {
     }, '');
     return ((strWithSpaces[0] === ' ') ? strWithSpaces.slice(1) : strWithSpaces);
 }
-
+// function onlyDigits() {
+//     this.value = this.value.replace(/[^\d\.]/g, "");
+//     if(this.value.match(/\./g).length > 1) {
+//       this.value = this.value.substr(0, this.value.lastIndexOf("."));
+//     }
+//   }
+//   document.querySelector(".amount-onne").onkeyup = onlyDigits
 currencyEl_one.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 amountEl_one.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 currencyEl_two.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
