@@ -66,33 +66,48 @@ h1 {
     font-size: 12px;
     color: #9F9F9F;
 }
-button {
-    width: 65px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-size: 12px;
-    padding-left: 17px;
-    color: #E5E5E5;
-    background: white;
-    border: 1px solid #E5E5E5;
-    margin-left: -1px;
-    cursor: pointer;
+#currency-one:focus {
+    outline: none;
 }
+#currency-two:focus {
+    outline: none;
+}
+#currency-one{
+    height: 44px;
+    border: none;
+    overflow: hidden;
+}
+#currency-two{
+    height: 44px;
+    border: none;
+    overflow: hidden;
+}
+option{
+    width: 65px;
+    font-size: 1.2em;
+    padding: 10px 0;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #E5E5E5;
+    color: #E5E5E5;
+}
+option:hover {
+    background-color: lightgray;
+ }
 button:hover {
     background-color: #833AE0;
     color: white;
 }
-.block1-buttons {
+.block1-select {
     display: flex;
     flex-direction: row;
     margin-top: 2px;
 }
-.button-first {
+.option-first {
     border-radius: 3px 0px 0px 3px;
 }
-.button-last {
+.option-last {
     border-radius: 0px 3px 3px 0px;
 }
 input {
@@ -104,4 +119,7 @@ input {
     font-size: 36px;
     font-weight: 700;
     outline: 0;
+}
+.rate-first {
+    border: 1px solid #E5E5E5;
 }
