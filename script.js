@@ -14,13 +14,24 @@ const rateEl2 = document.querySelector('.rate-second');
 // validate(amountEl_two)
 
 function spaces(num) {
+    num = num.toString()
     num = num.split('.')
-    let newNum = '.' + num[1]
+    let newNum = ''
+    if (num.length>=2) newNum = '.' + num[1]
     num = num[0]
     const s = num.length
-    for (let i=s; i>=0; i--) {
-        for (;i<=3)
+    // console.log(num)
+    // console.log(newNum)
+    for (let i=s-1; i>=0; i--) {
+        let j=i
+        for (; i>=j-2 && i>=0; i--) {
+            newNum = num[i] + newNum
+            // console.log(newNum)
+        }
+        i++
+        if (i!=0) newNum = ' ' + newNum 
     }
+    return newNum
 }
 
 function nulls(num) {
@@ -28,13 +39,24 @@ function nulls(num) {
 }
 function beautify(num) {
     num = nulls(num)
-    // num = spaces(num)
+    console.log(num)
+    num = spaces(num)
+    console.log(num)
     return num
+}
+function antiSpaces(num) {
+    let newNum = ''
+    for (let i=0; i<num.length; i++) {
+        if (num[i] != ' ') newNum = newNum + num[i]
+    }
+    return newNum
 }
 function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
   const currency_one = currencyEl_one.value;
   const currency_two = currencyEl_two.value;
 
+  if (amountEl_one.value == '') return
+  amountEl_one.value = antiSpaces(amountEl_one.value)
   fetch(`https://api.exchangerate.host/latest?base=${currency_one}`)
   .then((res) => res.json())
   .then((data) => {
