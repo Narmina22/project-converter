@@ -25,9 +25,11 @@ body {
 }
 img {
     margin: 15px 95px 15px 0px;
+    cursor: pointer;
 }
 .header p {
     margin: 20px 41px 15px 0px;
+    cursor: pointer;
 }
 .enter {
     border: 1px solid white;
@@ -42,6 +44,7 @@ img {
     padding-bottom: 5px;
     font-weight: 500;
     letter-spacing: 0.06em;
+    cursor: pointer;
 }
 .enter p {
     display: flex;

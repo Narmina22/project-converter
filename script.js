@@ -5,14 +5,6 @@ const amountEl_two = document.querySelector('.amount-two');
 const rateEl1 = document.querySelector('.rate-first');
 const rateEl2 = document.querySelector('.rate-second');
 
-// function validate(inp) {
-//     inp.value = inp.value.replace(/[^\d,.]*/g, '')
-//     .replace(/([,.])[,.]+/g, '$1')
-//     .replace(/^[^\d]*(\d+([.,]\d{0,5})?).*$/g, '$1');
-// }
-
-// validate(amountEl_two)
-
 function spaces(num) {
     num = num.toString()
     num = num.split('.')
@@ -20,28 +12,25 @@ function spaces(num) {
     if (num.length>=2) newNum = '.' + num[1]
     num = num[0]
     const s = num.length
-    // console.log(num)
-    // console.log(newNum)
     for (let i=s-1; i>=0; i--) {
         let j=i
         for (; i>=j-2 && i>=0; i--) {
             newNum = num[i] + newNum
-            // console.log(newNum)
         }
         i++
         if (i!=0) newNum = ' ' + newNum 
     }
     return newNum
 }
-
 function nulls(num) {
     return Number(num);
 }
+function onlyNumbers(num) {
+    
+}
 function beautify(num) {
     num = nulls(num)
-    console.log(num)
     num = spaces(num)
-    console.log(num)
     return num
 }
 function antiSpaces(num) {
@@ -67,8 +56,6 @@ function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
       amountEl_two.value = beautify((amountEl_one.value * rate).toFixed(4));
     })
 }
-
-
 
 currencyEl_one.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 amountEl_one.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
