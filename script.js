@@ -26,7 +26,8 @@ function nulls(num) {
     return Number(num);
 }
 function onlyNumbers(num) {
-    
+    let a 
+    if(!isNaN(num) || num == ',' || num == '.') num.value = ''
 }
 function beautify(num) {
     num = nulls(num)
