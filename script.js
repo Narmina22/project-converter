@@ -5,6 +5,7 @@ const amountEl_two = document.querySelector('.amount-two');
 const rateEl1 = document.querySelector('.rate-first');
 const rateEl2 = document.querySelector('.rate-second');
 
+
 function spaces(num) {
     num = num.toString()
     num = num.split('.')
@@ -25,10 +26,13 @@ function spaces(num) {
 function nulls(num) {
     return Number(num);
 }
-function onlyNumbers(num) {
-    let a 
-    if(!isNaN(num) || num == ',' || num == '.') num.value = ''
-}
+
+// $('.amount-one').on('input', function() {
+//     $(this).val($(this).val().replace(/\,/g, '.'))
+//     $(this).val($(this).val().replace(/(?=(\d+\.\d{3})).+|(\.(?=\.))|([^\.\d])|(^\D)/gi, '$1'))
+//     $(this).val($(this).val().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 '))
+
+
 function beautify(num) {
     num = nulls(num)
     num = spaces(num)

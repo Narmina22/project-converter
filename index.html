@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Converter</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="main">
         <div class="header">
             <img src="pic.svg" alt="img">
+            <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
             <div class="menu">
                 <p>БАНК</p>
                 <p>БИЗНЕС</p>
@@ -35,7 +38,7 @@
                         </select>
                     </div>
                     <div class="box">
-                        <input class="amount-one" type="text"> 
+                        <input class="amount-one" id="in1" type="text"> 
                         <div class="rate-first"></div>
                     </div>
                 </div>
