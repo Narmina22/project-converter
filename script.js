@@ -27,12 +27,16 @@ function nulls(num) {
     return Number(num);
 }
 
-// $('.amount-one').on('input', function() {
-//     $(this).val($(this).val().replace(/\,/g, '.'))
-//     $(this).val($(this).val().replace(/(?=(\d+\.\d{3})).+|(\.(?=\.))|([^\.\d])|(^\D)/gi, '$1'))
-//     $(this).val($(this).val().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 '))
-
-
+$('input#in1').on('input', function() {
+    $(this).val($(this).val().replace(/\,/g, '.'))
+    $(this).val($(this).val().replace(/(?=(\d+\.\d{3})).+|(\.(?=\.))|([^\.\d])|(^\D)/gi, '$1'))
+    $(this).val($(this).val().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 '))
+})
+$('input#in2').on('input', function() {
+    $(this).val($(this).val().replace(/\,/g, '.'))
+    $(this).val($(this).val().replace(/(?=(\d+\.\d{3})).+|(\.(?=\.))|([^\.\d])|(^\D)/gi, '$1'))
+    $(this).val($(this).val().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 '))
+})
 function beautify(num) {
     num = nulls(num)
     num = spaces(num)
@@ -60,10 +64,11 @@ function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
       rateEl2.innerText = `1 ${currency_two} = ${(1/rate).toFixed(4)} ${currency_one}`;
       amountEl_two.value = beautify((amountEl_one.value * rate).toFixed(4));
     })
+    .catch(() => alert('ERROR'))
 }
 
 currencyEl_one.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 amountEl_one.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
-currencyEl_two.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
+currencyEl_two.addEventListener('change', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
 amountEl_two.addEventListener('input', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
 calculate()

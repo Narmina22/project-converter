@@ -14,39 +14,39 @@ html,body{
     overflow-x: hidden;
 }
 .header {
+    /* width: fit-content; */
     display: flex;
     flex-direction: row;
     justify-content: center;
     background-color: #F5F5F6;
     font-size: 11px;
+    gap: 4vw;
 }
-.menu {
+.menu1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 5px;
+    gap: 2vw;
 }
 img {
-    margin: 15px 95px 15px 0px;
+    margin-top: 5px;
     cursor: pointer;
 }
-.header p {
-    margin: 20px 41px 15px 0px;
+.menu1 p {
     cursor: pointer;
 }
 .enter {
     border: 1px solid white;
     border-radius: 4px;
     background-color: white;
-    margin: 12px 50px 9px 80px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     height: 33px;
     width: 50px;
     display: flex;
     justify-content: center;
-    padding-left: 25px;
-    padding-bottom: 5px;
     font-weight: 500;
-    letter-spacing: 0.06em;
     cursor: pointer;
 }
 .enter p {
@@ -142,6 +142,23 @@ input {
     padding: 20px 0px 5px 15px;
     color: #C6C6C6;
 }
+.menu2 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    background-color: rgb(223, 223, 223);
+    margin: auto;
+    width: 150px;
+    font-size: 15px;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    
+}
+.menu2 p {
+    cursor: pointer;
+}
 @media (768px <= width <= 1023px) {
     .box {
         width: 260px;
@@ -152,6 +169,9 @@ input {
     option {
         width: 64px;
     }
+    .rate-first, .rate-second {
+        padding: 20px 0px 5px 15px;;
+    }
 }
 @media (370px <= width <= 767px) {
     h1 {
@@ -159,6 +179,9 @@ input {
     }
     .box {
         width: 330px;
+    }
+    .rate-first, .rate-second {
+        padding: 10px 0px 5px 15px;;
     }
     option {
         width: 81px;
@@ -169,7 +192,6 @@ input {
     .block1 p, .block2 p {
         font-size: 16px;
     }
-    
   }
   @media (320px <= width <= 390px) {
     h1 {
@@ -187,4 +209,21 @@ input {
     .block1 p, .block2 p {
         font-size: 14px;
     }
-  }
+}
+@media (0px <= width <= 767px) {
+    .menu1 {
+        display: none;
+    }
+    .header {
+        padding: 0.1% 7%;
+        justify-content: space-between;
+    }
+    .menu-bar {
+        display: block !important;
+        width: 35px;
+    }
+    .menu-bar:hover + .menu2 {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+}
