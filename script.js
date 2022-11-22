@@ -26,17 +26,19 @@ function spaces(num) {
 function nulls(num) {
     return Number(num);
 }
-
-$('input#in1').on('input', function() {
-    $(this).val($(this).val().replace(/\,/g, '.'))
-    $(this).val($(this).val().replace(/(?=(\d+\.\d{3})).+|(\.(?=\.))|([^\.\d])|(^\D)/gi, '$1'))
-    $(this).val($(this).val().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 '))
-})
-$('input#in2').on('input', function() {
-    $(this).val($(this).val().replace(/\,/g, '.'))
-    $(this).val($(this).val().replace(/(?=(\d+\.\d{3})).+|(\.(?=\.))|([^\.\d])|(^\D)/gi, '$1'))
-    $(this).val($(this).val().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 '))
-})
+function onlyYou(num) {
+    num = num.toString()
+    let newNum = '';
+    let f = 0;
+    l = num.length;
+    if(l > 0 && (num[0] < '0' || num[0] > '9')) return ''
+    for(let i = 0; i < l; i++){
+        if(num[i] >='0' && num[i] <= '9')newNum += num[i];
+        else if(f == 0 && num[i] == '.'){f = 1; newNum += num[i];}
+        else if(f == 0 && num[i] == ','){f = 1; newNum += '.';}
+    }
+    return newNum;
+}
 function beautify(num) {
     num = nulls(num)
     num = spaces(num)
@@ -49,12 +51,26 @@ function antiSpaces(num) {
     }
     return newNum
 }
+function antinulls(num){
+    num = num.toString();
+    let l = num.length;
+    let i = 0;
+    while(num[i] == '0')i++;
+    if(i > 0 && (num[i] == '.' || l - i == 0))i--;
+    num = num.substr(i, l - i)
+    return num
+}
 function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
-  const currency_one = currencyEl_one.value;
-  const currency_two = currencyEl_two.value;
-
-  if (amountEl_one.value == '') return
+    // console.log('narka')
+     //console.log(currencyEl_one.value)
+  const currency_one = currencyEl_one.value
+  const currency_two = currencyEl_two.value
+  let f = 1;
+  if (amountEl_one.value == '') f = 0
+//   console.log(f)
+  amountEl_one.value = onlyYou(amountEl_one.value)
   amountEl_one.value = antiSpaces(amountEl_one.value)
+  amountEl_one.value = antinulls(amountEl_one.value)
   fetch(`https://api.exchangerate.host/latest?base=${currency_one}`)
   .then((res) => res.json())
   .then((data) => {
@@ -62,7 +78,11 @@ function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
       const rate = data.rates[currency_two];
       rateEl1.innerText = `1 ${currency_one} = ${rate.toFixed(4)} ${currency_two}`;
       rateEl2.innerText = `1 ${currency_two} = ${(1/rate).toFixed(4)} ${currency_one}`;
-      amountEl_two.value = beautify((amountEl_one.value * rate).toFixed(4));
+      if (f==1) {
+        amountEl_two.value = beautify((amountEl_one.value * rate).toFixed(4));
+        amountEl_one.value = spaces(amountEl_one.value)
+    }
+      if (f==0) amountEl_two.value = ''
     })
     .catch(() => alert('ERROR'))
 }
@@ -71,4 +91,4 @@ currencyEl_one.addEventListener('change', () => {calculate(currencyEl_one, curre
 amountEl_one.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 currencyEl_two.addEventListener('change', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
 amountEl_two.addEventListener('input', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
-calculate()
+calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)

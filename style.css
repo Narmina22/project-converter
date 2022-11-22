@@ -152,9 +152,7 @@ input {
     width: 150px;
     font-size: 15px;
     opacity: 0;
-    left: 0;
-    right: 0;
-    
+    transform: translate(-30%, 13%);
 }
 .menu2 p {
     cursor: pointer;
@@ -224,6 +222,5 @@ input {
     }
     .menu-bar:hover + .menu2 {
         opacity: 1;
-        transform: translateY(20px);
     }
 }
