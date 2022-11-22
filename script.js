@@ -51,7 +51,7 @@ function antiSpaces(num) {
     }
     return newNum
 }
-function antinulls(num){
+function antiNulls(num){
     num = num.toString();
     let l = num.length;
     let i = 0;
@@ -61,16 +61,13 @@ function antinulls(num){
     return num
 }
 function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
-    // console.log('narka')
-     //console.log(currencyEl_one.value)
   const currency_one = currencyEl_one.value
   const currency_two = currencyEl_two.value
   let f = 1;
   if (amountEl_one.value == '') f = 0
-//   console.log(f)
   amountEl_one.value = onlyYou(amountEl_one.value)
   amountEl_one.value = antiSpaces(amountEl_one.value)
-  amountEl_one.value = antinulls(amountEl_one.value)
+  amountEl_one.value = antiNulls(amountEl_one.value)
   fetch(`https://api.exchangerate.host/latest?base=${currency_one}`)
   .then((res) => res.json())
   .then((data) => {
