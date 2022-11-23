@@ -32,6 +32,7 @@ html,body{
 img {
     margin-top: 5px;
     cursor: pointer;
+    filter: hue-rotate(65deg) brightness(150%);
 }
 .menu1 p {
     cursor: pointer;
@@ -106,8 +107,8 @@ option{
 option:hover {
     background-color: lightgray;
  }
-button:hover {
-    background-color: #833AE0;
+option:checked {
+    background-color: #ff419c;
     color: white;
 }
 .block1-select {
@@ -153,6 +154,7 @@ input {
     font-size: 15px;
     opacity: 0;
     transform: translate(-30%, 13%);
+    pointer-events: none;
 }
 .menu2 p {
     cursor: pointer;

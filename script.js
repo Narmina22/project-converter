@@ -1,7 +1,7 @@
 const currencyEl_one = document.getElementById('currency-one');
 const currencyEl_two = document.getElementById('currency-two');
-const amountEl_one = document.querySelector('.amount-one');
-const amountEl_two = document.querySelector('.amount-two');
+const amountEl_two = document.querySelector('.amount-one');
+const amountEl_one = document.querySelector('.amount-two');
 const rateEl1 = document.querySelector('.rate-first');
 const rateEl2 = document.querySelector('.rate-second');
 
@@ -71,8 +71,8 @@ function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
   fetch(`https://api.exchangerate.host/latest?base=${currency_one}`)
   .then((res) => res.json())
   .then((data) => {
-      console.log(data);
       const rate = data.rates[currency_two];
+      console.log(data);
       rateEl1.innerText = `1 ${currency_one} = ${rate.toFixed(4)} ${currency_two}`;
       rateEl2.innerText = `1 ${currency_two} = ${(1/rate).toFixed(4)} ${currency_one}`;
       if (f==1) {
@@ -87,5 +87,5 @@ function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
 currencyEl_one.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 amountEl_one.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 currencyEl_two.addEventListener('change', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
-amountEl_two.addEventListener('input', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
+amountEl_two.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_two, amountEl_one)});
 calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)
