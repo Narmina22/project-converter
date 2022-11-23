@@ -76,7 +76,7 @@ function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
       rateEl1.innerText = `1 ${currency_one} = ${rate.toFixed(4)} ${currency_two}`;
       rateEl2.innerText = `1 ${currency_two} = ${(1/rate).toFixed(4)} ${currency_one}`;
       if (f==1) {
-        amountEl_two.value = beautify((amountEl_one.value * rate).toFixed(4));
+        amountEl_two.value = beautify((amountEl_one.value / rate).toFixed(4));
         amountEl_one.value = spaces(amountEl_one.value)
     }
       if (f==0) amountEl_two.value = ''
@@ -87,5 +87,5 @@ function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
 currencyEl_one.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 amountEl_one.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 currencyEl_two.addEventListener('change', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
-amountEl_two.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_two, amountEl_one)});
+amountEl_two.addEventListener('input', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
 calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)
