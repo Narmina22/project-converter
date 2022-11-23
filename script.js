@@ -86,6 +86,7 @@ function calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two) {
 
 currencyEl_one.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
 amountEl_one.addEventListener('input', () => {calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)});
-currencyEl_two.addEventListener('change', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
+currencyEl_two.addEventListener('change', () => {calculate(currencyEl_one, currencyEl_two, amountEl_two, amountEl_one)});
 amountEl_two.addEventListener('input', () => {calculate(currencyEl_two, currencyEl_one, amountEl_two, amountEl_one)});
 calculate(currencyEl_one, currencyEl_two, amountEl_one, amountEl_two)
+
